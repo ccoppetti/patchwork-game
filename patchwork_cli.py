@@ -82,22 +82,20 @@ class PatchworkCLI:
 
         return Move(patch_idx, position, total_rotation)
 
-        def _get_patch_selection(self) -> int:
-            """Get valid patch selection from user.
+    def _get_patch_selection(self) -> int:
+        """Get valid patch selection from user.
 
-            Returns:
-                int: Index of selected patch
-            """
-            while True:
-                try:
-                    idx = int(
-                        input(f"{Color.CYAN}Enter patch number (0-2): {Color.RESET}")
-                    )
-                    if 0 <= idx <= 2 and idx < len(self.game.available_patches):
-                        return idx
-                    print(f"{Color.RED}Invalid patch number!{Color.RESET}")
-                except ValueError:
-                    print(f"{Color.RED}Please enter a number!{Color.RESET}")
+        Returns:
+            int: Index of selected patch
+        """
+        while True:
+            try:
+                idx = int(input(f"{Color.CYAN}Enter patch number (0-2): {Color.RESET}"))
+                if 0 <= idx <= 2 and idx < len(self.game.available_patches):
+                    return idx
+                print(f"{Color.RED}Invalid patch number!{Color.RESET}")
+            except ValueError:
+                print(f"{Color.RED}Please enter a number!{Color.RESET}")
 
     def _get_patch_rotation(self, original_patch) -> int:
         """Get valid rotation selection from user.
